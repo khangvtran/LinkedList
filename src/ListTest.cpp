@@ -201,7 +201,7 @@ int main() {
     else cout << "- They are not equal" << endl;
 
     // Test Reverse Print
-    cout << "- Start testing reversePrint(). \nWe use L2 which contains the follow data in the order we inserted in: ";
+    cout << endl << "**Start testing reversePrint()**. \nWe use L2 which contains the follow data in the order we inserted in: ";
     L2.print();
     cout << "Now reversePrint() L2: ";
     L2.reversePrint();
@@ -211,7 +211,7 @@ int main() {
     cout << endl;
 
     // Test isSorted()
-    cout << "- Test isSorted()" << endl;
+    cout << "**Test isSorted()**" << endl;
     cout << "-First test on L2: 0 1 2 3 4 5 6 7 8 9 10. Should print 'sorted':" << endl;
     if (L2.isSorted()) cout << "sorted" << endl;
     cout << "- Test isSorted() on an empty list. Should print 'sorted:" << endl;
@@ -229,6 +229,20 @@ int main() {
     if (L14.isSorted()) cout << "sorted" << endl;
     else cout << "Not sorted" << endl;
 
+    cout << endl << "**Test getIndex()**" << endl;
+    L2.removeStart();
+    L2.print();
+    cout <<"- Test getIndex when pointer is pointing to the first node. Should print 1" << endl;
+    L2.pointIterator();
+    cout << L2.getIndex() << endl;
+    cout << "-Now, advance the iterator 4 times, then test getIndex(). Should print 5" << endl;
+    for (int i = 0; i < 4; i++) L2.advanceIterator();
+    cout << L2.getIndex() << endl;
+    cout << "- Test getIndex() when the pointer is pointing to NULL. Should receive an error. Comment out the code" << endl;
+    List<int> L15;
+    L15.insertStart(1);
+    //cout << L15.getIndex() << endl;
+    //Assertion failed: (!offEnd()), function getIndex, file ../src/List.h, line 283.
 
     return 0;
 }

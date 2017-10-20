@@ -281,8 +281,18 @@ template <class listdata>
 int List<listdata>::getIndex() const
 {
 	assert(!offEnd());
-	assert(!size == 0); // Why do we need to enforce this if we have already enforced !offEnd()
+	assert(size != 0); // Why do we need to enforce this if we have already enforced !offEnd()
+	int i = 1;
+	Node* temp = iterator;
+	while (temp->linkprevious != NULL)
+	{
+		temp = temp->linkprevious;
+		i++;
+	}
+	return i;
 }
+
+
 /*************************************************************************/
 /**Manipulation Procedures*/
 template <class listdata>
@@ -389,7 +399,7 @@ void List<listdata>::reverseIterator()
 {
 	assert(!offEnd());
 	iterator = iterator->linkprevious;
-	if (offEnd()) cout << "Iterator is now pointing at NULL" << endl;
+	//if (offEnd()) cout << "Iterator is now pointing at NULL" << endl;
 }
 
 template <class listdata>
