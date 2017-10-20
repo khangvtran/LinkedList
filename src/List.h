@@ -91,6 +91,11 @@ public:
     // Return the element currently pointed at the iterator
     	// Precondition: iterator is not offEnd(). That is, not pointing to NULL
 
+    int getIndex() const;
+    //Indicates the index of the Node where the iterator is currently pointing
+    //Nodes are numbered starting at 1 through the size of the list
+    //Pre: size != 0
+    //Pre: !offEnd()
 
     /*************************************************************************/
     /**Manipulation Procedures*/
@@ -241,19 +246,6 @@ int List<listdata>::getSize() const
 }
 
 template <class listdata>
-bool List<listdata>::offEnd() const
-{
-	return iterator == NULL;
-}
-
-template <class listdata>
-listdata List<listdata>::getIterator() const
-{
-	assert(!offEnd());                // enforce precondition
-	return iterator->data;
-}
-
-template <class listdata>
 bool List<listdata>::isSorted() const
 {
 	return (isSorted(start));
@@ -270,6 +262,26 @@ bool List<listdata>::isSorted(Node* node) const
 		if (node->data > node->linknext->data) return false;
 		return(isSorted(node->linknext));   /*Important that we return here*/
 	}
+}
+
+template <class listdata>
+bool List<listdata>::offEnd() const
+{
+	return iterator == NULL;
+}
+
+template <class listdata>
+listdata List<listdata>::getIterator() const
+{
+	assert(!offEnd());                // enforce precondition
+	return iterator->data;
+}
+
+template <class listdata>
+int List<listdata>::getIndex() const
+{
+	assert(!offEnd());
+	assert(!size == 0); // Why do we need to enforce this if we have already enforced !offEnd()
 }
 /*************************************************************************/
 /**Manipulation Procedures*/
@@ -370,8 +382,6 @@ void List<listdata>::advanceIterator()
 {
 	assert(!offEnd());
 	iterator = iterator->linknext;
-	//if (offEnd())  cout << "Iterator is now pointing at NULL" << endl;
-
 }
 
 template <class listdata>
