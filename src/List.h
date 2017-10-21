@@ -445,7 +445,13 @@ template <class listdata>
 void List<listdata>::advanceToIndex(int index)
 {
 	assert(size != 0);
+	assert(0 < index);     // I think this is necessary
 	assert(index <= size);
+	pointIterator();
+	for (int i = 0; i < index - 1; i++) advanceIterator();
+	/*
+	// This function would be more efficient if we enforce precondition: !offEnd()
+	// We shall de it this way
 	int numNodeAway = index - getIndex();
 	if (numNodeAway > 0)
 	{
@@ -457,6 +463,7 @@ void List<listdata>::advanceToIndex(int index)
 		for (int i = 0; i < numNodeAway; i++) reverseIterator();
 	}
 	return;
+	*/
 }
 
 /*************************************************************************/
