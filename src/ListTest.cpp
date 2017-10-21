@@ -244,6 +244,22 @@ int main() {
     //cout << L15.getIndex() << endl;
     //Assertion failed: (!offEnd()), function getIndex, file ../src/List.h, line 283.
 
+    cout << endl << "**Test advanceToIndex()**" << endl;
+    cout << "- Test it on list L2: ";
+    L2.print();
+    L2.pointIterator();
+    //cout << L2.getIndex() << endl;
+    cout << "- Test advanceToIndex() to node 8. The getIndex(). Should print 8" << endl;
+    L2.advanceToIndex(8);
+    cout << L2.getIterator() << endl;
+    cout << "- Test advanceToIndex() to node 3. The getIndex(). Should print 3" << endl;
+    L2.advanceToIndex(3);
+    cout << L2.getIterator() << endl;
+    L2.advanceToIndex(3);
+    cout << "- Test advanceToIndex() to node 3 (the same node). The getIndex(). Should still print 3" << endl;
+    cout << L2.getIterator() << endl;
+
+
     return 0;
 }
 

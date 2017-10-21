@@ -147,6 +147,12 @@ public:
     //                offEnd()
     //                start and stop must be adjusted
 
+    void advanceToIndex(int index);
+    //Moves the iterator to the node whose index number is specified in the parameter
+    //Nodes are numbered starting at 1 through the size of the List
+    //Pre: size != 0
+    //Pre: index <= size
+
     /*************************************************************************/
     /**Additional List Operations*/
 
@@ -435,6 +441,23 @@ void List<listdata>::removeIterator()
 	}
 }
 
+template <class listdata>
+void List<listdata>::advanceToIndex(int index)
+{
+	assert(size != 0);
+	assert(index <= size);
+	int numNodeAway = index - getIndex();
+	if (numNodeAway > 0)
+	{
+		for (int i = 0; i < numNodeAway; i++) advanceIterator();
+	}
+	else if (numNodeAway < 0)
+	{
+		numNodeAway *= -1;
+		for (int i = 0; i < numNodeAway; i++) reverseIterator();
+	}
+	return;
+}
 
 /*************************************************************************/
 /**Additional List Operations*/
