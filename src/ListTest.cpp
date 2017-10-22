@@ -270,10 +270,17 @@ int main() {
     //Test advanceToIndex() on an empty list. Should be stopped. Comment out the code.
 
     	cout << endl << "**Now, test linearsearch**" << endl;
-    	cout << L2.linearSearch(3) << endl;
+    	cout << "- Test linearSearch() on list L2: ";
+    	L2.print();
+    	cout << "Now, test search for value 9, should print 9: ";
+    cout << L2.linearSearch(9) << endl;
+	cout << "Now, test search for value 3, should print 3: ";
+	cout << L2.linearSearch(3) << endl;
+	cout << "Now test linearSearch() on an empty list. Should return erro. Comment out the code." << endl;
+	//cout << L16.linearSearch(3) << endl;
+	//Assertion failed: (!isEmpty()), function linearSearch, file ../src/List.h, line 312.
 
-
-    return 0;
+	return 0;
 }
 
 
