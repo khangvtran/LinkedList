@@ -41,6 +41,12 @@ private:
     //Helper function for the public isSorted() function.
     //Recursively determines whether a list is sorted in ascending order.
 
+    int binarySearch(int low, int high, listdata data) const;
+    //Recursively search the list by dividing the search space in half
+    //Returns the index of the element, if it is found in the List
+    //Returns -1 if the element is not in the List
+    //Post: The iterator location has not been changed
+
 public:
 
     /**Constructors and Destructors*/
@@ -89,7 +95,12 @@ public:
     //Pre: length != 0
     //Post: The iterator location has not been changed
 
-
+    int binarySearch(listdata data) const;
+    //Returns the index where data is located in the List
+    //Calls the private helper function binarySearch to perform the search
+    //Pre: length != 0
+    //Pre: List is sorted (must test on a sorted list)
+    //Post: The iterator location has not been changed
 
     // ITERATOR ACCESS FUNCTIONS
     bool offEnd() const;
@@ -261,14 +272,14 @@ int List<listdata>::getSize() const
 }
 
 template <class listdata>
-bool List<listdata>::isSorted() const
+bool List<listdata>::isSorted() const          // PUBLIC
 {
 	return (isSorted(start));
 }
 
 
 template <class listdata>
-bool List<listdata>::isSorted(Node* node) const
+bool List<listdata>::isSorted(Node* node) const // PRIVATE
 {
 	// Base Case: if start == NULL or if the node is at the end, return true
 	if (node == NULL || node->linknext == NULL) return true;
@@ -323,6 +334,28 @@ int List<listdata>::linearSearch(listdata searchData)
 		advanceIterator();
 	}
 	return -1;
+}
+
+template <class listdata>
+int List<listdata>::binarySearch(listdata data) const
+{
+	assert(!isEmpty());
+	assert(isSorted());
+	return binarySearch(1, size, data);
+}
+
+template <class listdata>
+int List<listdata>::binarySearch(int low, int high, listdata data) const
+{
+	if ( low > high) return -1;
+	int mid = low + (high -low)/2;
+	//cout << mid << endl;
+	Node* temp = start;
+	for (int i = 1; i < mid; i++) temp = temp->linknext;
+	//cout << temp->data << endl;
+	if (temp->data == data) return mid;
+	else if (data < temp->data) return(binarySearch(low, mid-1, data));
+	else return(binarySearch(mid+1, high, data));
 }
 
 /*************************************************************************/
@@ -521,13 +554,13 @@ void List<listdata>::printNumberedList() const
 }
 
 template <class listdata>
-void List<listdata>::reversePrint() const
+void List<listdata>::reversePrint() const             // PUBLIC
 {
 	reversePrint(stop);
 }
 
 template <class listdata>
-void List<listdata>::reversePrint(Node* node) const
+void List<listdata>::reversePrint(Node* node) const    // PRIVATE
 {
 	Node* temp = node;
 	if (temp == NULL)

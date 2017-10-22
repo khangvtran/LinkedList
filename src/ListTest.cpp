@@ -274,11 +274,30 @@ int main() {
     	L2.print();
     	cout << "Now, test search for value 9, should print 9: ";
     cout << L2.linearSearch(9) << endl;
-	cout << "Now, test search for value 3, should print 3: ";
-	cout << L2.linearSearch(3) << endl;
-	cout << "Now test linearSearch() on an empty list. Should return erro. Comment out the code." << endl;
+	cout << "Now, test search for value 12, should print -1: ";
+	cout << L2.linearSearch(12) << endl;
+	cout << "Now test linearSearch() on an empty list. Should return error. Comment out the code." << endl;
 	//cout << L16.linearSearch(3) << endl;
 	//Assertion failed: (!isEmpty()), function linearSearch, file ../src/List.h, line 312.
+
+	cout << endl << "**Now, test binarySearch**" << endl;
+	cout << "- Test linearSearch() on list L2: ";
+	L2.print();
+	cout << "- Now, test search for value 7, should print 7: ";
+	cout << L2.binarySearch(7) << endl;
+	cout << "- Now, test search for value 1, should print 1: ";
+	cout << L2.binarySearch(1) << endl;
+	cout << "- Now, test search for value 10, should print 10: ";
+	cout << L2.binarySearch(10) << endl;
+	cout << "- Now, test search for value 12, should print -1: ";
+	cout << L2.binarySearch(12) << endl;
+	cout << "Now test binarySearch() on an empty list. Should return error. Comment out the code." << endl;
+	// cout << L16.binarySearch(3) << endl;
+	// Assertion failed: (!isEmpty()), function binarySearch, file ../src/List.h, line 342.
+	cout << "Now test binarySearch() on an unsorted list. Should return error. Comment out the code." << endl;
+	// cout << L14.binarySearch(5) << endl;
+	// Assertion failed: (isSorted()), function binarySearch, file ../src/List.h, line 343.
+
 
 	return 0;
 }
@@ -288,7 +307,7 @@ int main() {
 
 /*
 
- **Testing InsertStart**
+**Testing InsertStart**
 
 Should print out an empty line:
 
@@ -402,6 +421,59 @@ Next, insert data into one of the list and compare again
 - They are not equal
 Now, test the copy constructor and compare
 - They are not equal
+
+**Start testing reversePrint()**.
+We use L2 which contains the follow data in the order we inserted in: 0 1 2 3 4 5 6 7 8 9 10
+Now reversePrint() L2: 10 9 8 7 6 5 4 3 2 1 0
+Test printing on an empty list. Should print an empty line
+
+
+**Test isSorted()**
+-First test on L2: 0 1 2 3 4 5 6 7 8 9 10. Should print 'sorted':
+sorted
+- Test isSorted() on an empty list. Should print 'sorted:
+sorted
+- Test isSorted() on a list with only one node, should print 'sorted':
+sorted
+- For a list that contains 1 2 3 5 4, print() that list first then test isSorted(), should print 'not sorted':
+1 2 3 5 4
+Not sorted
+
+**Test getIndex()**
+1 2 3 4 5 6 7 8 9 10
+- Test getIndex when pointer is pointing to the first node. Should print 1
+1
+-Now, advance the iterator 4 times, then test getIndex(). Should print 5
+5
+- Test getIndex() when the pointer is pointing to NULL. Should receive an error. Comment out the code
+
+**Test advanceToIndex()**
+- Test it on list L2: 1 2 3 4 5 6 7 8 9 10
+- Test advanceToIndex() to index 8. The getIndex(). Should print 8
+8
+- Test advanceToIndex() to index 3. The getIndex(). Should print 3
+3
+- Test advanceToIndex() to index 3 (the same node). The getIndex(). Should still print 3
+3
+-Test advanceToIndex() to index 11. Should be stopped. Comment out the code.
+-Test advanceToIndex() to index 0. Should be stopped. Comment out the code
+-Test advanceToIndex() on an empty list. Should be stopped. Comment out the code.
+
+**Now, test linearsearch**
+- Test linearSearch() on list L2: 1 2 3 4 5 6 7 8 9 10
+Now, test search for value 9, should print 9: 9
+Now, test search for value 12, should print -1: -1
+Now test linearSearch() on an empty list. Should return error. Comment out the code.
+
+**Now, test binarySearch**
+- Test linearSearch() on list L2: 1 2 3 4 5 6 7 8 9 10
+- Now, test search for value 7, should print 7: 7
+- Now, test search for value 1, should print 1: 1
+- Now, test search for value 10, should print 10: 10
+- Now, test search for value 12, should print -1: -1
+Now test binarySearch() on an empty list. Should return error. Comment out the code.
+Now test binarySearch() on an unsorted list. Should return error. Comment out the code.
+
 */
 
 
