@@ -81,6 +81,14 @@ public:
     //We will consider that a list is trivially sorted if it is empty.
     //Therefore, no precondition is needed for this function
 
+    int linearSearch(listdata data) const;
+    //Searchs the list, element by element, from the start of the List to the end of the List
+    //Returns the index of the element, if it is found in the List
+    //Calls the above indexing functions in its implementation
+    //Returns -1 if the element is not in the List
+    //Pre: length != 0
+    //Post: The iterator location has not been changed
+
 
 
     // ITERATOR ACCESS FUNCTIONS
@@ -119,6 +127,7 @@ public:
     //Inserts a new data at the start of the list
     //If the list is empty, the new data becomes both first and last
     //Postcondition: size increases by 1
+
 
     // 	ITERATOR MANIPULATOR FUNCTIONS
     void pointIterator();
@@ -287,7 +296,6 @@ template <class listdata>
 int List<listdata>::getIndex() const
 {
 	assert(!offEnd());
-	assert(size != 0); // Why do we need to enforce this if we have already enforced !offEnd()
 	int i = 1;
 	Node* temp = iterator;
 	while (temp->linkprevious != NULL)
@@ -298,6 +306,27 @@ int List<listdata>::getIndex() const
 	return i;
 }
 
+template <class listdata>
+int List<listdata>::linearSearch(listdata searchData) const
+{
+	assert(!isEmpty());           // enforce Precondition
+	int originalIndex = getIndex();
+	pointIterator();
+	while(!offEnd())
+	{
+		if (iterator->data != searchData)
+		{
+			advanceIterator();
+		}
+		else
+		{
+			int foundAtIndex = getIndex();
+			advanceToIndex(originalIndex);
+			return foundAtIndex;
+		}
+	}
+	return -1;
+}
 
 /*************************************************************************/
 /**Manipulation Procedures*/

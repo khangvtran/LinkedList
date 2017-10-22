@@ -269,6 +269,8 @@ int main() {
     //L16.advanceToIndex(3);
     //Test advanceToIndex() on an empty list. Should be stopped. Comment out the code.
 
+    	cout << endl << "**Now, test linearsearch**" << endl;
+    	cout << L2.linearSearch(3) << endl;
 
 
     return 0;
