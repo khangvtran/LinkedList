@@ -272,8 +272,12 @@ int main() {
     	cout << endl << "**Now, test linearsearch**" << endl;
     	cout << "- Test linearSearch() on list L2: ";
     	L2.print();
-    	cout << "Now, test search for value 9, should print 9: ";
-    cout << L2.linearSearch(9) << endl;
+    	cout << "Now, test search for value 1, should print 1: ";
+    cout << L2.linearSearch(1) << endl;
+    	cout << "Now, test search for value 4, should print 4: ";
+    cout << L2.linearSearch(4) << endl;
+	cout << "Now, test search for value 10, should print 10: ";
+	cout << L2.linearSearch(10) << endl;
 	cout << "Now, test search for value 12, should print -1: ";
 	cout << L2.linearSearch(12) << endl;
 	cout << "Now test linearSearch() on an empty list. Should return error. Comment out the code." << endl;
@@ -461,7 +465,9 @@ Not sorted
 
 **Now, test linearsearch**
 - Test linearSearch() on list L2: 1 2 3 4 5 6 7 8 9 10
-Now, test search for value 9, should print 9: 9
+Now, test search for value 1, should print 1: 1
+Now, test search for value 4, should print 4: 4
+Now, test search for value 10, should print 10: 10
 Now, test search for value 12, should print -1: -1
 Now test linearSearch() on an empty list. Should return error. Comment out the code.
 

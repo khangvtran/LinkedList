@@ -87,7 +87,7 @@ public:
     //We will consider that a list is trivially sorted if it is empty.
     //Therefore, no precondition is needed for this function
 
-    int linearSearch(listdata searchData);
+    int linearSearch(listdata Data) const;
     //Searchs the list, element by element, from the start of the List to the end of the List
     //Returns the index of the element, if it is found in the List
     //Calls the above indexing functions in its implementation
@@ -318,20 +318,16 @@ int List<listdata>::getIndex() const
 }
 
 template <class listdata>
-int List<listdata>::linearSearch(listdata searchData)
+int List<listdata>::linearSearch(listdata data) const
 {
-	assert(!isEmpty());           // enforce Precondition
-	int originalIndex = getIndex();
-	pointIterator();
-	while(!offEnd())
+	assert(!isEmpty());
+	Node* temp = start;
+	int index = 1;
+	while (temp != NULL)
 	{
-		if (iterator->data == searchData)
-		{
-			int foundAtIndex = getIndex();
-			advanceToIndex(originalIndex);
-			return foundAtIndex;
-		}
-		advanceIterator();
+		if (temp->data == data) return index;
+		index++;
+		temp = temp->linknext;
 	}
 	return -1;
 }
@@ -349,10 +345,8 @@ int List<listdata>::binarySearch(int low, int high, listdata data) const
 {
 	if ( low > high) return -1;
 	int mid = low + (high -low)/2;
-	//cout << mid << endl;
 	Node* temp = start;
 	for (int i = 1; i < mid; i++) temp = temp->linknext;
-	//cout << temp->data << endl;
 	if (temp->data == data) return mid;
 	else if (data < temp->data) return(binarySearch(low, mid-1, data));
 	else return(binarySearch(mid+1, high, data));
