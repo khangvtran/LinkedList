@@ -2,7 +2,7 @@
 /*
  * ListTest.cpp
  *
- *	Khang Vinh Tran
+ *	Khang Vinh Tran, Tri Doan
  *  CIS 22C, Lab2
 */
 
@@ -285,7 +285,7 @@ int main() {
 	//Assertion failed: (!isEmpty()), function linearSearch, file ../src/List.h, line 312.
 
 	cout << endl << "**Now, test binarySearch**" << endl;
-	cout << "- Test linearSearch() on list L2: ";
+	cout << "- Test binarySearch() on list L2: ";
 	L2.print();
 	cout << "- Now, test search for value 7, should print 7: ";
 	cout << L2.binarySearch(7) << endl;
@@ -472,7 +472,7 @@ Now, test search for value 12, should print -1: -1
 Now test linearSearch() on an empty list. Should return error. Comment out the code.
 
 **Now, test binarySearch**
-- Test linearSearch() on list L2: 1 2 3 4 5 6 7 8 9 10
+- Test binarySearch() on list L2: 1 2 3 4 5 6 7 8 9 10
 - Now, test search for value 7, should print 7: 7
 - Now, test search for value 1, should print 1: 1
 - Now, test search for value 10, should print 10: 10

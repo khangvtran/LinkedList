@@ -1,7 +1,7 @@
 /*
  * List.h
  *
- *	Khang Vinh Tran
+ *	Khang Vinh Tran, Tri Doan
  *  CIS 22C, Lab2
  */
 
